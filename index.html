@@ -810,5 +810,64 @@ document.getElementById("today").textContent =
 document.getElementById("year").textContent = now.getFullYear();
 
 renderNews();
+    <script>
+const NEWS_API = "https://misty-voice-0f0c.nnotila97.workers.dev/news?category=general";
+
+async function loadRealNews() {
+  try {
+    const response = await fetch(NEWS_API);
+    if (!response.ok) throw new Error("News request failed");
+
+    const data = await response.json();
+    const articles = data.articles || [];
+
+    if (!articles.length) return;
+
+    const container = document.querySelector("main");
+    if (!container) return;
+
+    const section = document.createElement("section");
+    section.style.cssText =
+      "padding:20px;max-width:1200px;margin:20px auto;direction:rtl";
+
+    section.innerHTML =
+      '<h2 style="margin-bottom:20px">📰 آخر الأخبار الحقيقية</h2>' +
+      articles.map(article => `
+        <article style="padding:15px;margin-bottom:15px;border:1px solid #ddd;border-radius:12px">
+          <h3>${escapeNewsText(article.title)}</h3>
+          <p>${escapeNewsText(article.description || "")}</p>
+          <a href="${safeNewsUrl(article.url)}" target="_blank" rel="noopener noreferrer">
+            اقرأ الخبر من المصدر
+          </a>
+        </article>
+      `).join("");
+
+    container.prepend(section);
+  } catch (error) {
+    console.error("تعذر تحميل الأخبار:", error);
+  }
+}
+
+function escapeNewsText(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function safeNewsUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" ? escapeNewsText(url.href) : "#";
+  } catch {
+    return "#";
+  }
+}
+
+loadRealNews();
+</script>
 </script></body>
       </html>
