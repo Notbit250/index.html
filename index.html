@@ -1,873 +1,189 @@
 <!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="نافذة الخبر - موقع إخباري للأخبار الجزائرية والعالمية والاقتصادية والرياضية">
-<title>نافذة الخبر | آخر الأخبار</title><style>
-:root {
-    --primary: #123c69;
-    --secondary: #e63946;
-    --bg: #f4f6f9;
-    --text: #222;
-    --muted: #6b7280;
-    --white: #fff;
-    --border: #e5e7eb;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Tahoma, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button, input {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-.topbar {
-    background: #0b2545;
-    color: white;
-    padding: 7px 5%;
-    font-size: 13px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.header {
-    background: white;
-    padding: 18px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--primary);
-}
-
-.logo span {
-    color: var(--secondary);
-}
-
-.tagline {
-    font-size: 12px;
-    color: var(--muted);
-}
-
-.search {
-    display: flex;
-    gap: 6px;
-}
-
-.search input {
-    width: 210px;
-    max-width: 60vw;
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-}
-
-.search button {
-    border: 0;
-    background: var(--secondary);
-    color: white;
-    border-radius: 8px;
-    padding: 8px 14px;
-}
-
-.nav {
-    background: var(--primary);
-    color: white;
-    display: flex;
-    padding: 0 5%;
-    gap: 5px;
-    overflow-x: auto;
-}
-
-.nav button {
-    background: transparent;
-    color: white;
-    border: 0;
-    padding: 13px 15px;
-    white-space: nowrap;
-}
-
-.nav button.active,
-.nav button:hover {
-    background: var(--secondary);
-}
-
-.breaking {
-    margin: 18px auto;
-    width: 90%;
-    background: white;
-    border-radius: 8px;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    border: 1px solid var(--border);
-}
-
-.breaking strong {
-    background: var(--secondary);
-    color: white;
-    padding: 9px 15px;
-    white-space: nowrap;
-}
-
-.breaking p {
-    padding: 0 12px;
-    margin: 0;
-    font-size: 14px;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 25px auto;
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-right: 5px solid var(--secondary);
-    padding-right: 12px;
-    margin: 25px 0 15px;
-}
-
-.section-title h2 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.section-title small {
-    color: var(--muted);
-}
-
-.hero {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 18px;
-}
-
-.hero-main {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px #00000008;
-}
-
-.hero-image {
-    min-height: 250px;
-    background: linear-gradient(135deg, #123c69, #4d86bd);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 75px;
-}
-
-.hero-content {
-    padding: 20px;
-}
-
-.badge {
-    display: inline-block;
-    color: white;
-    background: var(--secondary);
-    border-radius: 5px;
-    font-size: 12px;
-    padding: 3px 9px;
-}
-
-.hero-content h1 {
-    font-size: 25px;
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-.meta {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.hero-side {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.side-item {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex: 1;
-}
-
-.side-icon {
-    background: #e8eef6;
-    min-width: 65px;
-    height: 65px;
-    display: grid;
-    place-items: center;
-    font-size: 29px;
-    border-radius: 8px;
-}
-
-.side-item h3 {
-    margin: 5px 0;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px #00000008;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-image {
-    min-height: 125px;
-    display: grid;
-    place-items: center;
-    font-size: 48px;
-    background: #e5edf7;
-}
-
-.card-content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.card h3 {
-    margin: 9px 0;
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-.card p {
-    font-size: 13px;
-    color: #555;
-    margin: 0 0 12px;
-}
-
-.read-more {
-    border: 0;
-    background: transparent;
-    color: var(--primary);
-    font-weight: bold;
-    padding: 5px 0;
-    text-align: right;
-    margin-top: auto;
-}
-
-.tag {
-    color: var(--secondary);
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 25px;
-}
-
-.sidebar {
-    background: white;
-    padding: 18px;
-    border-radius: 10px;
-    height: fit-content;
-}
-
-.sidebar h3 {
-    margin-top: 0;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 10px;
-}
-
-.trend {
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
-    font-size: 14px;
-}
-
-.trend:last-child {
-    border: 0;
-}
-
-.newsletter {
-    background: var(--primary);
-    color: white;
-    padding: 22px;
-    margin-top: 25px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.newsletter input {
-    width: 100%;
-    max-width: 350px;
-    padding: 11px;
-    border-radius: 6px;
-    border: 0;
-    margin: 8px 0;
-}
-
-.newsletter button {
-    background: var(--secondary);
-    color: white;
-    border: 0;
-    border-radius: 6px;
-    padding: 10px 18px;
-}
-
-.footer {
-    background: #0b2545;
-    color: white;
-    padding: 30px 5%;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.footer p {
-    color: #cbd5e1;
-    font-size: 13px;
-}
-
-.empty {
-    text-align: center;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    grid-column: 1 / -1;
-}
-
-#reader {
-    display: none;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-}
-
-#reader h2 {
-    line-height: 1.7;
-}
-
-#reader p {
-    white-space: pre-line;
-}
-
-#reader button {
-    background: var(--primary);
-    color: white;
-    border: 0;
-    border-radius: 6px;
-    padding: 8px 15px;
-}
-
-@media (max-width: 800px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-image {
-        min-height: 180px;
-    }
-
-    .news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .layout {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 15px 4%;
-    }
-
-    .logo {
-        font-size: 25px;
-    }
-
-    .search {
-        width: 100%;
-    }
-
-    .search input {
-        width: 100%;
-        max-width: none;
-        min-width: 0;
-    }
-
-    .container {
-        width: 92%;
-    }
-
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-content h1 {
-        font-size: 21px;
-    }
-
-    .breaking {
-        width: 92%;
-    }
-}
-</style></head><body><div class="topbar">
-    <span id="today">نافذة الخبر | تغطية إخبارية</span>
-    <span>معلومة موثوقة تبدأ من هنا</span>
-</div><header class="header">
-    <div>
-        <div class="logo">نافذة <span>الخبر</span></div>
-        <div class="tagline">نرصد الحدث وننقل الصورة</div>
-    </div><form class="search" id="searchForm">
-    <input type="search" id="searchInput" placeholder="ابحث في الأخبار..." aria-label="البحث">
-    <button type="submit">بحث</button>
-</form>
-
-</header><nav class="nav" aria-label="أقسام الأخبار">
-    <button class="active" data-category="الكل">الرئيسية</button>
-    <button data-category="الجزائر">أخبار الجزائر</button>
-    <button data-category="العالم">أخبار العالم</button>
-    <button data-category="اقتصاد">اقتصاد</button>
-    <button data-category="رياضة">رياضة</button>
-    <button data-category="تكنولوجيا">تكنولوجيا</button>
-    <button data-category="صحة">صحة</button>
-</nav><div class="breaking">
-    <strong>تنبيه</strong>
-    <p>هذا الموقع نموذج تجريبي، والأخبار المعروضة أمثلة توضيحية وليست أخباراً مباشرة.</p>
-</div><main class="container"><section id="reader" aria-live="polite">
-    <button onclick="closeArticle()">العودة إلى الأخبار ←</button>
-    <h2 id="readerTitle"></h2>
-    <div class="meta" id="readerMeta"></div>
-    <p id="readerText"></p>
-</section>
-
-<section id="heroSection">
-    <div class="section-title">
-        <h2>الحدث الأبرز</h2>
-        <small>اختيارات التحرير</small>
-    </div>
-
-    <div class="hero">
-        <article class="hero-main">
-            <div class="hero-image">📰</div>
-            <div class="hero-content">
-                <span class="badge">نموذج تجريبي</span>
-                <h1>نافذة الخبر: منصة عربية لمتابعة الأحداث المحلية والدولية</h1>
-                <p>واجهة تجمع مختلف أقسام الأخبار في مكان واحد، مع إمكانية البحث وقراءة تفاصيل كل خبر.</p>
-                <div class="meta">إدارة الموقع · محتوى تعريفي</div>
-            </div>
-        </article>
-
-        <div class="hero-side">
-            <article class="side-item">
-                <div class="side-icon">🇩🇿</div>
-                <div>
-                    <span class="tag">الجزائر</span>
-                    <h3>متابعة أخبار الولايات والمشاريع المحلية</h3>
-                </div>
-            </article>
-
-            <article class="side-item">
-                <div class="side-icon">🌍</div>
-                <div>
-                    <span class="tag">العالم</span>
-                    <h3>نظرة على أبرز الملفات الدولية</h3>
-                </div>
-            </article>
-
-            <article class="side-item">
-                <div class="side-icon">💻</div>
-                <div>
-                    <span class="tag">تكنولوجيا</span>
-                    <h3>تطورات التقنية والتحول الرقمي</h3>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<div class="layout">
-    <section>
-        <div class="section-title">
-            <h2 id="sectionHeading">آخر الأخبار</h2>
-            <small id="resultCount"></small>
-        </div>
-
-        <div class="news-grid" id="newsGrid"></div>
-    </section>
-
-    <aside>
-        <div class="sidebar">
-            <h3>📌 أقسام الموقع</h3>
-            <div class="trend">🇩🇿 أخبار الجزائر والولايات</div>
-            <div class="trend">🌍 أخبار عربية ودولية</div>
-            <div class="trend">📈 الاقتصاد والأعمال</div>
-            <div class="trend">⚽ الرياضة</div>
-            <div class="trend">💻 التكنولوجيا والابتكار</div>
-            <div class="trend">🏥 الصحة والمجتمع</div>
-        </div>
-
-        <div class="sidebar" style="margin-top:20px">
-            <h3>ℹ️ عن الموقع</h3>
-            <p style="font-size:14px">
-                نافذة الخبر مشروع تجريبي لعرض الأخبار حسب الأقسام.
-                يجب التحقق من المصادر قبل نشر أي خبر حقيقي.
-            </p>
-        </div>
-    </aside>
-</div>
-
-<section class="newsletter">
-    <h2>ابقَ على اطلاع</h2>
-    <p>واجهة تجريبية للاشتراك في النشرة البريدية.</p>
-    <form id="newsletterForm">
-        <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
-        <br>
-        <button type="submit">اشترك الآن</button>
-    </form>
-    <p id="newsletterMessage" aria-live="polite"></p>
-</section>
-
-</main><footer class="footer">
-    <div class="logo" style="color:white">نافذة <span>الخبر</span></div>
-    <p>منصة إخبارية عربية — مشروع تجريبي قابل للتطوير.</p>
-    <p>© <span id="year"></span> نافذة الخبر. جميع الحقوق محفوظة.</p>
-    <p>المحتوى الحالي تجريبي ولا يمثل تغطية إخبارية مباشرة.</p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b4e">
+<title>نافذة الخبر | أخبار الجزائر والعالم</title><style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f2f5f9;color:#192638;line-height:1.8}
+header{background:linear-gradient(135deg,#102b4e,#1769aa);color:white;padding:25px 16px}
+.container{width:min(1100px,94%);margin:auto}
+.logo{font-size:29px;font-weight:bold}
+.logo span{color:#ffcc59}
+header p{color:#e0eaf5;margin-bottom:0}
+nav{background:white;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
+button{font-family:inherit;cursor:pointer}
+.cat{border:0;background:#edf2f8;padding:9px 15px;border-radius:20px;white-space:nowrap}
+.cat.active,.cat:hover{background:#1769aa;color:white}
+main{padding:24px 0 40px}
+.tools{display:flex;gap:10px;margin-bottom:20px}
+input{min-width:0;flex:1;padding:12px;border:1px solid #d5deea;border-radius:10px;font-size:15px}
+.refresh{border:0;border-radius:10px;background:#ffcc59;padding:10px 15px;font-weight:bold}
+h2{font-size:23px;color:#102b4e}
+#status{font-size:14px;color:#52647a;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:white;border-radius:14px;overflow:hidden;border:1px solid #e3eaf2;box-shadow:0 3px 12px #00000008;display:flex;flex-direction:column}
+.card img{width:100%;height:190px;object-fit:cover;background:#dce5ef}
+.content{padding:15px;display:flex;flex-direction:column;flex:1}
+.source{font-size:12px;background:#e7f1fc;color:#1769aa;padding:3px 9px;border-radius:15px;align-self:flex-start}
+.card h3{font-size:17px;line-height:1.7;margin:10px 0}
+.desc{color:#59697a;font-size:14px}
+.date{font-size:12px;color:#8591a0;margin-top:auto;padding-top:10px}
+.read{display:inline-block;margin-top:10px;color:#1769aa;font-weight:bold}
+.message{background:white;border-radius:12px;padding:25px;text-align:center;grid-column:1/-1;color:#59697a}
+.note{background:#fff7e2;padding:12px;border-radius:10px;font-size:13px;color:#745719;margin-top:25px}
+footer{background:#102b4e;color:#e0eaf5;text-align:center;padding:23px 12px;font-size:13px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.card img{height:210px}.logo{font-size:25px}.tools{flex-wrap:wrap}.refresh{width:100%}}
+</style></head><body>
+<header>
+ <div class="container">
+  <div class="logo">📰 نافذة <span>الخبر</span></div>
+  <p>أخبار الجزائر والعالم في مكان واحد</p>
+  <h1>الخبر بين يديك</h1>
+  <p id="today"></p>
+ </div>
+</header><nav>
+ <div class="container nav">
+  <button class="cat active" data-category="general">كل الأخبار</button>
+  <button class="cat" data-category="nation">أخبار الجزائر</button>
+  <button class="cat" data-category="world">العالم</button>
+  <button class="cat" data-category="business">اقتصاد</button>
+  <button class="cat" data-category="sports">رياضة</button>
+  <button class="cat" data-category="technology">تكنولوجيا</button>
+  <button class="cat" data-category="health">صحة</button>
+ </div>
+</nav><main class="container">
+ <div id="status">جاري الاتصال بمصدر الأخبار...</div> <div class="tools">
+  <input id="search" type="search" placeholder="🔎 ابحث عن خبر...">
+  <button class="refresh" id="refresh">⟳ تحديث الأخبار</button>
+ </div> <h2 id="heading">آخر الأخبار</h2>
+ <section class="grid" id="news">
+  <div class="message">جاري تحميل الأخبار...</div>
+ </section> <div class="note">
+  ملاحظة: الأخبار تُجلب من خدمة GNews. الخطة المجانية قد تعرض أخباراً متأخرة،
+  وتوفر الأخبار الجزائرية يعتمد على المصادر المتاحة لدى الخدمة.
+ </div>
+</main><footer>
+ نافذة الخبر — أخبار الجزائر والعالم © <span id="year"></span>
 </footer><script>
-const articles = [
-    {
-        id: 1,
-        category: "الجزائر",
-        icon: "🇩🇿",
-        title: "أهمية التحول الرقمي في تطوير الخدمات المحلية",
-        summary: "يساهم استخدام الأنظمة الرقمية في تسهيل الإجراءات وتحسين وصول المواطنين إلى الخدمات.",
-        content: "هذا نص تجريبي للتوضيح، وليس خبراً حقيقياً. يمكن للمؤسسات استخدام قواعد البيانات والأنظمة الرقمية لتنظيم الملفات وتسهيل الإجراءات الإدارية. يجب إضافة مصدر موثوق وتاريخ النشر عند تحويل هذا النموذج إلى موقع إخباري فعلي.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 2,
-        category: "العالم",
-        icon: "🌍",
-        title: "التعاون الدولي ودوره في مواجهة التحديات العالمية",
-        summary: "تتطلب القضايا العالمية تبادل المعلومات والتنسيق بين المؤسسات والدول.",
-        content: "هذا مثال توضيحي وليس خبراً راهناً. تتناول التغطية الدولية عادة العلاقات الدبلوماسية والاقتصاد والبيئة والتعاون العلمي. ينبغي الرجوع إلى مصادر إخبارية موثوقة لتوثيق الوقائع والتواريخ.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 3,
-        category: "اقتصاد",
-        icon: "📈",
-        title: "المؤسسات الصغيرة ودورها في دعم الاقتصاد",
-        summary: "تسهم المؤسسات الصغيرة في خلق فرص العمل وتطوير الخدمات والمنتجات.",
-        content: "هذا نص تجريبي عام. تختلف المؤشرات الاقتصادية حسب البلد والفترة الزمنية، لذلك يجب إسناد أي أرقام أو تصريحات اقتصادية إلى مصادر رسمية أو تقارير موثوقة.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 4,
-        category: "رياضة",
-        icon: "⚽",
-        title: "الرياضة والعمل الجماعي: أكثر من مجرد منافسة",
-        summary: "تساعد الأنشطة الرياضية على تعزيز التعاون والانضباط والعمل الجماعي.",
-        content: "هذا مقال تجريبي وليس تقريراً عن مباراة محددة. عند إضافة نتائج المباريات أو أخبار الفرق واللاعبين، يجب ذكر المسابقة والتاريخ والمصدر.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 5,
-        category: "تكنولوجيا",
-        icon: "💻",
-        title: "الذكاء الاصطناعي وتطور الخدمات الرقمية",
-        summary: "تتوسع تطبيقات الذكاء الاصطناعي في مجالات التعليم وتحليل البيانات والخدمات.",
-        content: "هذا نص تجريبي للتعريف بالموضوع. ينبغي عند نشر أخبار التكنولوجيا التحقق من اسم المنتج أو الشركة وتاريخ الإعلان والميزات المعلنة من مصدر رسمي أو موثوق.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 6,
-        category: "صحة",
-        icon: "🏥",
-        title: "التوعية الصحية وأهمية المعلومات الموثوقة",
-        summary: "يساعد الوصول إلى المعلومات الصحية الدقيقة على فهم الإرشادات العامة والوقاية.",
-        content: "هذا نص توعوي تجريبي وليس نصيحة طبية شخصية. يجب الاعتماد على الجهات الصحية المختصة والمصادر الطبية الموثوقة عند نشر معلومات صحية.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 7,
-        category: "الجزائر",
-        icon: "🏫",
-        title: "التكوين المهني وتنمية المهارات الرقمية",
-        summary: "يساعد التدريب التطبيقي على إعداد المتعلمين لاستخدام التقنيات الحديثة.",
-        content: "هذا مقال تجريبي عام. عند نشر خبر عن مؤسسة تكوين أو إعلان رسمي، أضف اسم المؤسسة والرابط الأصلي وتاريخ النشر.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 8,
-        category: "العالم",
-        icon: "🌐",
-        title: "الإنترنت ودوره في تبادل المعرفة",
-        summary: "أصبح الوصول إلى المصادر الرقمية جزءاً مهماً من التعلم والتواصل.",
-        content: "هذا نص تجريبي عن الإنترنت. يمكن تطوير المقال بإضافة بيانات موثقة وروابط إلى تقارير رسمية ودراسات معروفة.",
-        date: "محتوى تجريبي"
-    },
-    {
-        id: 9,
-        category: "اقتصاد",
-        icon: "💼",
-        title: "المهارات الرقمية في سوق العمل الحديث",
-        summary: "تزداد أهمية المهارات التقنية في عدد من المهن والقطاعات.",
-        content: "هذا نص تجريبي عام. ينبغي استخدام بيانات سوق العمل الحديثة ومصادرها عند إعداد تقرير فعلي عن فرص العمل أو الرواتب.",
-        date: "محتوى تجريبي"
-    }
-];
+const API="https://misty-voice-0f0c.nnotila97.workers.dev/news";
+const news=document.getElementById("news");
+const statusBox=document.getElementById("status");
+const search=document.getElementById("search");
+const heading=document.getElementById("heading");
 
-let currentCategory = "الكل";
-let currentSearch = "";
+let articles=[];
+let category="general";
+let requestNumber=0;
 
-function renderNews() {
-    const grid = document.getElementById("newsGrid");
-    grid.replaceChildren();
+const names={
+ general:"كل الأخبار",
+ nation:"أخبار الجزائر",
+ world:"أخبار العالم",
+ business:"أخبار الاقتصاد",
+ sports:"أخبار الرياضة",
+ technology:"أخبار التكنولوجيا",
+ health:"أخبار الصحة"
+};
 
-    const filtered = articles.filter(function(article) {
-        const matchesCategory =
-            currentCategory === "الكل" ||
-            article.category === currentCategory;
+document.getElementById("today").textContent=
+new Date().toLocaleDateString("ar-DZ",{year:"numeric",month:"long",day:"numeric"});
+document.getElementById("year").textContent=new Date().getFullYear();
 
-        const query = currentSearch.toLowerCase();
-
-        const matchesSearch =
-            article.title.toLowerCase().includes(query) ||
-            article.summary.toLowerCase().includes(query) ||
-            article.category.toLowerCase().includes(query);
-
-        return matchesCategory && matchesSearch;
-    });
-
-    document.getElementById("resultCount").textContent =
-        filtered.length + " خبر تجريبي";
-
-    filtered.forEach(function(article) {
-        const card = document.createElement("article");
-        card.className = "card";
-
-        const image = document.createElement("div");
-        image.className = "card-image";
-        image.textContent = article.icon;
-        image.setAttribute("aria-hidden", "true");
-
-        const content = document.createElement("div");
-        content.className = "card-content";
-
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = article.category;
-
-        const title = document.createElement("h3");
-        title.textContent = article.title;
-
-        const summary = document.createElement("p");
-        summary.textContent = article.summary;
-
-        const meta = document.createElement("div");
-        meta.className = "meta";
-        meta.textContent = article.date;
-
-        const button = document.createElement("button");
-        button.className = "read-more";
-        button.textContent = "اقرأ التفاصيل ←";
-        button.addEventListener("click", function() {
-            openArticle(article.id);
-        });
-
-        content.append(tag, title, summary, meta, button);
-        card.append(image, content);
-        grid.appendChild(card);
-    });
-
-    if (filtered.length === 0) {
-        const empty = document.createElement("div");
-        empty.className = "empty";
-        empty.textContent = "لم نجد أخباراً مطابقة لبحثك.";
-        grid.appendChild(empty);
-    }
-
-    document.getElementById("sectionHeading").textContent =
-        currentSearch ? "نتائج البحث" :
-        currentCategory === "الكل" ? "آخر الأخبار" :
-        "أخبار " + currentCategory;
+function safe(value){
+ return String(value||"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
 }
 
-function openArticle(id) {
-    const article = articles.find(function(item) {
-        return item.id === id;
-    });
-
-    if (!article) return;
-
-    document.getElementById("readerTitle").textContent = article.title;
-    document.getElementById("readerMeta").textContent =
-        article.category + " · " + article.date;
-    document.getElementById("readerText").textContent =
-        article.content;
-
-    document.getElementById("reader").style.display = "block";
-    document.getElementById("heroSection").style.display = "none";
-    document.getElementById("reader").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+function showMessage(text){
+ news.innerHTML='<div class="message">'+safe(text)+'</div>';
 }
 
-function closeArticle() {
-    document.getElementById("reader").style.display = "none";
-    document.getElementById("heroSection").style.display = "block";
-}
+function render(){
+ const term=search.value.trim().toLowerCase();
+ const filtered=articles.filter(a=>
+ [a.title,a.description,a.source?.name]
+ .join(" ").toLowerCase().includes(term)
+ );
 
-document.querySelectorAll(".nav button").forEach(function(button) {
-    button.addEventListener("click", function() {
-        document.querySelectorAll(".nav button").forEach(function(item) {
-            item.classList.remove("active");
-        });
+ if(!filtered.length){
+  showMessage(term?"ما لقيناش نتائج لهذا البحث.":"ما كاينش أخبار متاحة حالياً.");
+  return;
+ }
 
-        button.classList.add("active");
-        currentCategory = button.dataset.category;
-        currentSearch = "";
-        document.getElementById("searchInput").value = "";
-
-        closeArticle();
-        renderNews();
-    });
-});
-
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    currentSearch = document.getElementById("searchInput")
-        .value.trim();
-
-    closeArticle();
-    renderNews();
-});
-
-document.getElementById("newsletterForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    document.getElementById("newsletterMessage").textContent =
-        "هذا نموذج تجريبي؛ الاشتراك الفعلي غير مفعّل حالياً.";
-});
-
-const now = new Date();
-
-document.getElementById("today").textContent =
-    now.toLocaleDateString("ar-DZ", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    });
-
-document.getElementById("year").textContent = now.getFullYear();
-
-renderNews();
-    <script>
-const NEWS_API = "https://misty-voice-0f0c.nnotila97.workers.dev/news?category=general";
-
-async function loadRealNews() {
-  try {
-    const response = await fetch(NEWS_API);
-    if (!response.ok) throw new Error("News request failed");
-
-    const data = await response.json();
-    const articles = data.articles || [];
-
-    if (!articles.length) return;
-
-    const container = document.querySelector("main");
-    if (!container) return;
-
-    const section = document.createElement("section");
-    section.style.cssText =
-      "padding:20px;max-width:1200px;margin:20px auto;direction:rtl";
-
-    section.innerHTML =
-      '<h2 style="margin-bottom:20px">📰 آخر الأخبار الحقيقية</h2>' +
-      articles.map(article => `
-        <article style="padding:15px;margin-bottom:15px;border:1px solid #ddd;border-radius:12px">
-          <h3>${escapeNewsText(article.title)}</h3>
-          <p>${escapeNewsText(article.description || "")}</p>
-          <a href="${safeNewsUrl(article.url)}" target="_blank" rel="noopener noreferrer">
-            اقرأ الخبر من المصدر
-          </a>
-        </article>
-      `).join("");
-
-    container.prepend(section);
-  } catch (error) {
-    console.error("تعذر تحميل الأخبار:", error);
+ news.innerHTML=filtered.map(a=>{
+  const title=safe(a.title||"عنوان غير متوفر");
+  const desc=safe(a.description||"افتح الخبر لقراءة التفاصيل من المصدر.");
+  const source=safe(a.source?.name||"مصدر الخبر");
+  const image=/^https?:\/\//i.test(a.image||"")?a.image:"";
+  const link=/^https?:\/\//i.test(a.url||"")?a.url:"";
+  let date="";
+  if(a.publishedAt){
+   const d=new Date(a.publishedAt);
+   if(!isNaN(d))date=d.toLocaleDateString("ar-DZ");
   }
+
+  return `<article class="card">
+   ${image?`<img src="${safe(image)}" alt="${title}" loading="lazy" onerror="this.style.display='none'">`:""}
+   <div class="content">
+    <span class="source">${source}</span>
+    <h3>${title}</h3>
+    <p class="desc">${desc}</p>
+    <div class="date">${date}</div>
+    ${link?`<a class="read" href="${safe(link)}" target="_blank" rel="noopener noreferrer">اقرأ الخبر كاملاً ←</a>`:""}
+   </div>
+  </article>`;
+ }).join("");
 }
 
-function escapeNewsText(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
+async function loadNews(selected){
+ category=selected;
+ const myRequest=++requestNumber;
+ heading.textContent=names[selected]||"آخر الأخبار";
 
-function safeNewsUrl(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? escapeNewsText(url.href) : "#";
-  } catch {
-    return "#";
+ document.querySelectorAll(".cat").forEach(b=>
+  b.classList.toggle("active",b.dataset.category===selected)
+ );
+
+ statusBox.textContent="جاري تحميل الأخبار...";
+ showMessage("لحظة من فضلك، جاري جلب الأخبار...");
+
+ try{
+  const response=await fetch(API+"?category="+encodeURIComponent(selected));
+  const data=await response.json();
+
+  if(myRequest!==requestNumber)return;
+  if(!response.ok||data.error||data.errors){
+   throw new Error("خدمة الأخبار أرجعت خطأ.");
   }
+
+  articles=Array.isArray(data.articles)?data.articles:[];
+  if(!articles.length){
+   statusBox.textContent="لم تصل أخبار من الخدمة حالياً.";
+   showMessage("ما وصلتناش أخبار لهذا التصنيف. جرّب لاحقاً.");
+   return;
+  }
+
+  statusBox.textContent="تم جلب "+articles.length+" أخبار.";
+  render();
+ }catch(error){
+  if(myRequest!==requestNumber)return;
+  statusBox.textContent="تعذر الاتصال بخدمة الأخبار.";
+  showMessage("ما قدرناش نحمّل الأخبار. تأكد أن Cloudflare Worker منشور وأن خدمة GNews تعمل، ثم حاول مجدداً.");
+  console.error(error);
+ }
 }
 
-loadRealNews();
-</script>
+document.querySelectorAll(".cat").forEach(button=>{
+ button.addEventListener("click",()=>loadNews(button.dataset.category));
+});
+
+search.addEventListener("input",render);
+document.getElementById("refresh").addEventListener("click",()=>loadNews(category));
+
+loadNews("general");
 </script></body>
-      </html>
+</html>
